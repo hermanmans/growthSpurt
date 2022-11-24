@@ -17,37 +17,38 @@ router.get('/addUser', async (req, res) => { // how to add a user through code
     }
 });
 */
-router.get('/tweets', async (req, res) => {
-    const tweets = Schemas.Tweets;
-    const userTweets = await tweets.find({}).populate("user").exec((err, tweetData) => {
+router.get('/height', async (req, res) => {
+    const growth = Schemas.height;
+    const userGrowth = await height.find({}).populate("user").exec((err, user_heightData) => {
         if (err) throw err;
-        if (tweetData) {
-            res.end(JSON.stringify(tweetData));
+        if (user_height) {
+            res.end(JSON.stringify(user_height));
         } else {
             res.end();
         }
     });
 });
 
-router.post('/addTweet', async (req, res) => { // using a form to post to database
-    const userTweet = req.body.tweetInput;
+router.post('/addHeight', async (req, res) => { // using a form to post to database
+    const nameEntry = req.body.nameInput;
+    const heightEntry = req.body.heightInput;
     const user = Schemas.Users;
     const userId = await user.findOne({username:'herman'}).exec();
 
-    const newTweet = new Schemas.Tweets({
-        tweet: userTweet,
+    const newHeight = new Schemas.Height({
+        user_height: heightEntry,
         user: userId._id
     });
 
     try {
-        await newTweet.save( (err, newTweetResults) => {
+        await newHeight.save( (err, newHeightResults) => {
             if (err) res.end('Error Saving.');
-            res.redirect('/tweets');
+            res.redirect('/height');
             res.end();
         });
     } catch(err) {
         console.log(err);
-        res.redirect('/tweets');
+        res.redirect('/height');
         res.end();
     }
 });

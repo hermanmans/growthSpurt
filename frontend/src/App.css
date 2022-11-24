@@ -39,3 +39,14 @@
 .tweetData{
   color: black;
 }
+
+.input-group-prepend{
+  display: flex;
+  flex-direction: column;
+}
+input{
+  margin-bottom: 5px;
+}
+label{
+  padding: 1px;
+}
