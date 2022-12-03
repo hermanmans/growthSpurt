@@ -3,17 +3,15 @@ const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
     username:{type:String, required:true},
-    fullname:{type:String,required:true},
-    entryDate:{type:Date,default:Date.now}
 });
 
-const tweetSchema = new Schema({
-    tweet:{type:String,required:true},
+const heightSchema = new Schema({
+    user_height:{type:String,required:true},
     user:{type:Schema.Types.ObjectId,ref:'users'}
 });
 
 const Users = mongoose.model('users',userSchema, 'users');
-const Tweets = mongoose.model('tweets',tweetSchema,'tweets');
-const mySchemas = {'Users':Users,'Tweets':Tweets};
+const Height = mongoose.model('height',heightSchema,'height');
+const mySchemas = {'Users':Users,'Height':Height};
 
 module.exports = mySchemas;

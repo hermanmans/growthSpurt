@@ -1,9 +1,10 @@
 const express = require('express');
+const { Users } = require('../models/Schemas');
 const router = express.Router();
 const Schemas = require('../models/Schemas');
-/*
+
 router.get('/addUser', async (req, res) => { // how to add a user through code
-    const user = {username:"karla",fullname: 'Karla Mans'};
+    const user = {username:"karla"};
     const newUser = new Schemas.Users(user); // new user inserted as 'user' variable
 
     try {
@@ -16,9 +17,9 @@ router.get('/addUser', async (req, res) => { // how to add a user through code
         res.end('User not added!');
     }
 });
-*/
+
 router.get('/height', async (req, res) => {
-    const growth = Schemas.height;
+    const growth = Schemas.Height;
     const userGrowth = await height.find({}).populate("user").exec((err, user_heightData) => {
         if (err) throw err;
         if (user_height) {
@@ -30,7 +31,6 @@ router.get('/height', async (req, res) => {
 });
 
 router.post('/addHeight', async (req, res) => { // using a form to post to database
-    const nameEntry = req.body.nameInput;
     const heightEntry = req.body.heightInput;
     const user = Schemas.Users;
     const userId = await user.findOne({username:'herman'}).exec();

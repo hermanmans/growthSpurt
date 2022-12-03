@@ -1,7 +1,7 @@
 //import logo from './logo.svg';
 import './App.css';
 import Nav from './components/Nav';
-import Height from './components/Tweet';
+import Height from './components/Height';
 import {BrowserRouter as Router,Routes,Route} from 'react-router-dom';
 
 function App() {
@@ -11,7 +11,7 @@ function App() {
       <header className="App-header">
         <Nav />
         <Routes>
-          <Route path='/growth' exact element={<Height/>} />
+          <Route path='/growth' exact element={<Height/>}/>
         </Routes>
       </header>
     </div>
