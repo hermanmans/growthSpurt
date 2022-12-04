@@ -1,9 +1,9 @@
 //import logo from './logo.svg';
 import './App.css';
 import Nav from './components/Nav';
-import Height from './components/Height';
-import Result from './components/Results';
+import Mail from './components/Height';
 import {BrowserRouter as Router,Routes,Route} from 'react-router-dom';//direct to different pages as a URL router
+//import { Height } from '../../backend/models/Schemas';
 
 //Function called app exported and returning 
 function App() {
@@ -13,8 +13,7 @@ function App() {
       <header className="App-header">
         <Nav />
         <Routes>
-          <Route path='/growth' exact element={<Height/>}/>
-          <Route path='/results' exact element={<Result/>}/>
+          <Route path='/growth' exact element={<Mail/>}/>
         </Routes>
       </header>
     </div>

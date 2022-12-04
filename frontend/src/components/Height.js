@@ -1,9 +1,10 @@
 import '../App.css';
 import React, {useEffect, useState} from 'react';
+import { send } from 'emailjs-com';
 
 // import {Link} from 'react-router-dom';
 
-function Height() {
+/*function Height() {
     useEffect( () => {
         fetchItems();
     }, []);
@@ -48,4 +49,65 @@ function Height() {
     );
 }
 
-export default Height;
+export default Height;*/
+    
+
+function Mail() {
+    const [toSend, setToSend] = useState({
+      from_name: '',
+      to_name: '',
+      message: '',
+      reply_to: '',
+    });
+  
+    const onSubmit = (e) => {
+      e.preventDefault();
+      send(
+        'service_budqe7w',
+        'template_w3kjoe8',
+        toSend,
+        '6BXSWOkApd5RYLe73'
+      )
+        .then((response) => {
+          console.log('SUCCESS!', response.status, response.text);
+        })
+        .catch((err) => {
+          console.log('FAILED...', err);
+        });
+    };
+
+  
+    const handleChange = (e) => {
+      setToSend({ ...toSend, [e.target.name]: e.target.value });
+    };
+  
+    return (
+      <div className='App'>
+        {<form onSubmit={onSubmit}>
+            <input
+                type='text'
+                name='username'
+                placeholder='username'
+                value={toSend.username}
+                onChange={handleChange}
+            />
+            <input
+                type='text'
+                name='Height'
+                placeholder='Height'
+                value={toSend.Height}
+                onChange={handleChange}
+            />
+            <input
+                type='text'
+                name='Email'
+                placeholder='Email'
+                value={toSend.Email}
+                onChange={handleChange}
+            />
+            <input type='submit' value='Submit'></input>
+        </form>}
+      </div>
+    );
+  }
+  export default Mail;
