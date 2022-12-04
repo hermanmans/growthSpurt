@@ -2,8 +2,10 @@
 import './App.css';
 import Nav from './components/Nav';
 import Height from './components/Height';
-import {BrowserRouter as Router,Routes,Route} from 'react-router-dom';
+import Result from './components/Results';
+import {BrowserRouter as Router,Routes,Route} from 'react-router-dom';//direct to different pages as a URL router
 
+//Function called app exported and returning 
 function App() {
   return (
     <Router>
@@ -12,6 +14,7 @@ function App() {
         <Nav />
         <Routes>
           <Route path='/growth' exact element={<Height/>}/>
+          <Route path='/results' exact element={<Result/>}/>
         </Routes>
       </header>
     </div>
