@@ -106,9 +106,20 @@ function Mail() {
                                     onChange={handleChange}
                                     class="form-control" />
                             <label for="heightInput">User Height</label>
-                            <input type="text" name="Height" class="form-control"/>
+                            <input 
+                                     type="text" 
+                                     name="Height" 
+                                     placeholder='Height'
+                                     value={toSend.Height}
+                                     onChange={handleChange}
+                                    class="form-control"/>
                             <label for="email">Email Address</label>
-                            <input type="email" name="Email"/>
+                            <input 
+                                     type="email" 
+                                     name="Email" 
+                                     placeholder='Email'
+                                     value={toSend.Email}
+                                     onChange={handleChange}/>
                             <input type="submit" value="Submit" class="btn btn-primary mb-2" />
                         </div>
                     </div>
@@ -126,6 +137,11 @@ function Mail() {
         <section className='Mail'>
                 <div className='Mail'>
                     <form onSubmit={onSubmit}>
+                    <input type="text" name="username"
+                                    placeholder='username'
+                                    value={toSend.username}
+                                    onChange={handleChange}
+                                    />
                         <input
                             type='text'
                             name='Height'
