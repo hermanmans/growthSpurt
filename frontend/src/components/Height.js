@@ -96,7 +96,7 @@ function Mail() {
         <><section className='Mail'>
             <div class="container-fluid">
                 <h1 class="mt-5">Growth Spurt Checker</h1>
-                <form className='detailForm' method="POST" action="/addHeight">
+                <form className='detailForm' method="POST" action="/addHeight" onSubmit={onSubmit} >
                     <div class="input-group justify-content-center">
                         <div class="input-group-prepend">
                             <label for="nameInput">Username</label>
@@ -106,9 +106,17 @@ function Mail() {
                                     onChange={handleChange}
                                     class="form-control" />
                             <label for="heightInput">User Height</label>
-                            <input type="text" name="Height" class="form-control"/>
+                            <input type="text" name="Height" 
+                                    placeholder='Height'
+                                    value={toSend.Height}
+                                    onChange={handleChange}
+                                    class="form-control"/>
                             <label for="email">Email Address</label>
-                            <input type="email" name="Email"/>
+                            <input type="email" name="Email" 
+                                    placeholder='Email'
+                                    value={toSend.Email}
+                                    onChange={handleChange}
+                                    class="form-control"/>
                             <input type="submit" value="Submit" class="btn btn-primary mb-2" />
                         </div>
                     </div>
@@ -126,19 +134,7 @@ function Mail() {
         <section className='Mail'>
                 <div className='Mail'>
                     <form onSubmit={onSubmit}>
-                        <input
-                            type='text'
-                            name='Height'
-                            placeholder='Height'
-                            value={toSend.Height}
-                            onChange={handleChange} />
-                        <input
-                            type='text'
-                            name='Email'
-                            placeholder='Email'
-                            value={toSend.Email}
-                            onChange={handleChange} />
-                        <input type="submit" value="Submit" class="btn btn-primary mb-2" />
+                        
                     </form>
                 </div>
             </section></>  
