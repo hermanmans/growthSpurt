@@ -61,15 +61,14 @@ function Mail() {
     const [items, setItems] = useState([]);
 
     const fetchItems = async () => {
-        const data = await fetch('/growth');
+        const data = await fetch('/growth'); //fetch from page growth
         const items = await data.json();
         setItems(items);
     };
     const [toSend, setToSend] = useState({
-      from_name: '',
-      to_name: '',
-      message: '',
-      reply_to: '',
+      username: '',
+      Height: '',
+      Email: '',
     });
   
     const onSubmit = async (e) => {
@@ -94,63 +93,55 @@ function Mail() {
     };
   
     return (
-        <section className='Mail'>
+        <><section className='Mail'>
             <div class="container-fluid">
                 <h1 class="mt-5">Growth Spurt Checker</h1>
-                <form className='detailForm' method="POST" action="/addHeight" onSubmit={onSubmit}>
+                <form className='detailForm' method="POST" action="/addHeight">
                     <div class="input-group justify-content-center">
                         <div class="input-group-prepend">
                             <label for="nameInput">Username</label>
-                                <input type="text" name="username" class="form-control" value={toSend.username}
-                onChange={handleChange} />
+                            <input type="text" name="username"
+                                    placeholder='username'
+                                    value={toSend.username}
+                                    onChange={handleChange}
+                                    class="form-control" />
                             <label for="heightInput">User Height</label>
-                                <input type="text" name="Height" class="form-control" value={toSend.Height}
-                onChange={handleChange}/>
+                            <input type="text" name="Height" class="form-control"/>
                             <label for="email">Email Address</label>
-                                <input type="email" name="email" value={toSend.Email}
-                onChange={handleChange}/>
-                                <input type="submit" value="Submit" class="btn btn-primary mb-2" />
+                            <input type="email" name="Email"/>
+                            <input type="submit" value="Submit" class="btn btn-primary mb-2" />
                         </div>
                     </div>
                 </form>
 
-                {
-                items.map(item => (
+                {items.map(item => (
                     <div class="row padding">
                         <div class="alert alert-info rounded-pill" role="alert">
                             <i class="fa fa-user mr-2"></i> <i>({item.user.username}): {item.Height}</i>
                         </div>
-                    </div>       
-                ))
-                }
+                    </div>
+                ))}
             </div>
         </section>
-      /*<div className='Mail'>
-        <form onSubmit={onSubmit}>
-            <input
-                type='text'
-                name='username'
-                placeholder='username'
-                value={toSend.username}
-                onChange={handleChange}
-            />
-            <input
-                type='text'
-                name='Height'
-                placeholder='Height'
-                value={toSend.Height}
-                onChange={handleChange}
-            />
-            <input
-                type='text'
-                name='Email'
-                placeholder='Email'
-                value={toSend.Email}
-                onChange={handleChange}
-            />
-            <input type='submit' value='Submit'/>
-        </form>
-      </div>*/
+        <section className='Mail'>
+                <div className='Mail'>
+                    <form onSubmit={onSubmit}>
+                        <input
+                            type='text'
+                            name='Height'
+                            placeholder='Height'
+                            value={toSend.Height}
+                            onChange={handleChange} />
+                        <input
+                            type='text'
+                            name='Email'
+                            placeholder='Email'
+                            value={toSend.Email}
+                            onChange={handleChange} />
+                        <input type="submit" value="Submit" class="btn btn-primary mb-2" />
+                    </form>
+                </div>
+            </section></>  
     );
   }
   export default Mail;
