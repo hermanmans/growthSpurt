@@ -5,7 +5,8 @@ import Mail from './components/Height';
 import {BrowserRouter as Router,Routes,Route} from 'react-router-dom';//direct to different pages as a URL router
 //import { Height } from '../../backend/models/Schemas';
 
-//Function called app exported and returning 
+//Function called app exported and returning
+//Mail function routed to /growth url 
 function App() {
   return (
     <Router>

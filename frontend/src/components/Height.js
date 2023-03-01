@@ -1,57 +1,6 @@
 import '../App.css';
 import React, {useEffect, useState} from 'react';
-import { send } from 'emailjs-com';
-//import { Height } from '../../../backend/models/Schemas';
-
-// import {Link} from 'react-router-dom';
-
-/*function Height() {
-    useEffect( () => {
-        fetchItems();
-    }, []);
-
-    const [items, setItems] = useState([]);
-
-    const fetchItems = async () => {
-        const data = await fetch('/growth');
-        const items = await data.json();
-        setItems(items);
-    };
-
-    return(
-        <section className='userData'>
-            <div class="container-fluid">
-                <h1 class="mt-5">Growth Spurt Checker</h1>
-                <form className='detailForm' method="POST" action="/addHeight">
-                    <div class="input-group justify-content-center">
-                        <div class="input-group-prepend">
-                            <label for="nameInput">Username</label>
-                                <input type="text" name="nameInput" class="form-control" />
-                            <label for="heightInput">User Height</label>
-                                <input type="text" name="heightInput" class="form-control" />
-                            <label for="email">Email Address</label>
-                                <input type="email" name="email"/>
-                                <input type="submit" value="Send" class="btn btn-primary mb-2" />
-                        </div>
-                    </div>
-                </form>
-
-                {
-                items.map(item => (
-                    <div class="row padding">
-                        <div class="alert alert-info rounded-pill" role="alert">
-                            <i class="fa fa-user mr-2"></i> <i>({item.user.username}): {item.height}</i>
-                        </div>
-                    </div>       
-                ))
-                }
-            </div>
-        </section>
-    );
-}
-
-export default Height;*/
-    
+import { send } from 'emailjs-com'; //package emailJS imported
 
 function Mail() {
     useEffect( () => {
@@ -65,19 +14,19 @@ function Mail() {
         const items = await data.json();
         setItems(items);
     };
-    const [toSend, setToSend] = useState({
+    const [toSend, setToSend] = useState({ //state variables to use for db
       username: '',
       Height: '',
       Email: '',
     });
   
-    const onSubmit = async (e) => {
+    const onSubmit = async (e) => { //method for manipulating form data and send mail
       e.preventDefault();
       send(
-        'service_budqe7w',
-        'template_w3kjoe8',
+        'service_budqe7w', // service id
+        'template_w3kjoe8', //template id
         toSend,
-        '6BXSWOkApd5RYLe73'
+        '6BXSWOkApd5RYLe73' //public key
       )
         .then((response) => {
           console.log('SUCCESS!', response.status, response.text);
@@ -88,15 +37,15 @@ function Mail() {
     };
 
   
-    const handleChange = (e) => {
-      setToSend({ ...toSend, [e.target.name]: e.target.value });
+    const handleChange = (e) => { //method for manipulating form data on change
+      setToSend({ ...toSend, [e.target.name]: e.target.value }); //target value of input
     };
   
-    return (
-        <><section className='Mail'>
+    return ( //form with two sections
+        <><section className='Data'>
             <div class="container-fluid">
                 <h1 class="mt-5">Growth Spurt Checker</h1>
-                <form className='detailForm' method="POST" action="/addHeight" onSubmit={onSubmit} >
+                <form className='detailForm' method="POST" action="/addHeight">
                     <div class="input-group justify-content-center">
                         <div class="input-group-prepend">
                             <label for="nameInput">Username</label>
@@ -106,18 +55,21 @@ function Mail() {
                                     onChange={handleChange}
                                     class="form-control" />
                             <label for="heightInput">User Height</label>
-                            <input type="text" name="Height" 
-                                    placeholder='Height'
-                                    value={toSend.Height}
-                                    onChange={handleChange}
+                            <input 
+                                     type="text" 
+                                     name="Height" 
+                                     placeholder='Height'
+                                     value={toSend.Height}
+                                     onChange={handleChange}
                                     class="form-control"/>
                             <label for="email">Email Address</label>
-                            <input type="email" name="Email" 
-                                    placeholder='Email'
-                                    value={toSend.Email}
-                                    onChange={handleChange}
-                                    class="form-control"/>
-                            <input type="submit" value="Submit" class="btn btn-primary mb-2" />
+                            <input 
+                                     type="email" 
+                                     name="Email" 
+                                     placeholder='Email'
+                                     value={toSend.Email}
+                                     onChange={handleChange}/>
+                            <input type="submit" value="Submit to DB" class="btn btn-primary mb-2" />
                         </div>
                     </div>
                 </form>
@@ -132,12 +84,28 @@ function Mail() {
             </div>
         </section>
         <section className='Mail'>
-                <div className='Mail'>
+                <div> 
                     <form onSubmit={onSubmit}>
-                        
+                    <input type="text" name="username"
+                        placeholder='username'
+                        value={toSend.username}
+                        onChange={handleChange}/>
+                    <input
+                        type='text'
+                        name='Height'
+                        placeholder='Height'
+                        value={toSend.Height}
+                        onChange={handleChange} />
+                    <input
+                        type='text'
+                        name='Email'
+                        placeholder='Email'
+                        value={toSend.Email}
+                        onChange={handleChange} />
+                        <input type="submit" value="Submit Email" class="btn btn-primary mb-2" />
                     </form>
                 </div>
-            </section></>  
+        </section></>  
     );
   }
   export default Mail;

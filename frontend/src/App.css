@@ -21,7 +21,7 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: black;
 }
 
 .App-link {
@@ -36,9 +36,6 @@
     transform: rotate(360deg);
   }
 }
-.tweetData{
-  color: black;
-}
 
 .input-group-prepend{
   display: flex;
@@ -49,4 +46,10 @@ input{
 }
 label{
   padding: 1px;
+}
+.Mail,.Data{
+  background-image: url(../public/Board.jpg);
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 8px 8px 8px 8px;
 }

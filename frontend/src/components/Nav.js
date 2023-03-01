@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom';
 function Nav(){
     return(
         <div>
-            <Link to='/growth' className="nav-item nav-link">GO</Link>
+            <h1><Link to='/growth' className="nav-item nav-link">GROWTHSPURT</Link></h1>
         </div>
 
     );

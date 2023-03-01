@@ -1,3 +1,4 @@
+//How db schema is set up or configured
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
@@ -6,7 +7,7 @@ const userSchema = new Schema({
 });
 
 const heightSchema = new Schema({
-    user_height:{type:String,required:true},
+    user_height:{type:Number,required:true},
     user:{type:Schema.Types.ObjectId,ref:'users'}
 });
 
